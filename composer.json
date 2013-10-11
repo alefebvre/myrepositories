@@ -1,0 +1,31 @@
+{
+    "name": "sdis62/toolbox",
+    "description": "SDIS 62 PHP library.",
+    "keywords": [
+        "zend",
+        "library"
+    ],
+    "type": "library",
+    "homepage": "https://github.com/SDIS62/toolbox",
+    "version": "dev-master",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kévin DUBUC",
+            "email": "kevindubuc62@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "zendframework/zendframework1": "1.*"
+		"apigen": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SDIS62": "library"
+        }
+    },
+    "include-path": [
+        ""
+    ]
+}
