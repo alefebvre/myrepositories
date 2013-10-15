@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=5.3",
-        "zendframework/zendframework1": "1.*"
+        "zendframework/zendframework1": "1.*",
 		"apigen/apigen": "2.*"
 		
     },
