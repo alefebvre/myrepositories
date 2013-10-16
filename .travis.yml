@@ -14,7 +14,7 @@ php:
   # aliased to a recent 5.5.x version
   - 5.5
 
-
+before_script: composer install
 script: phpunit UnitTest.php
 
 # configure notifications (email, IRC, campfire etc)
