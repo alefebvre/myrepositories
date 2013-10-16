@@ -16,6 +16,7 @@ php:
 
 before_script: composer install
 script: phpunit UnitTest.php
+after_script: apigen --source . --destination docs/api
 
 # configure notifications (email, IRC, campfire etc)
 notifications:
