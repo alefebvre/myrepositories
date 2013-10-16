@@ -8,7 +8,7 @@ php:
   # aliased to 5.2.17
   - 5.2
  
- script :
+ script:
  
  phpunit UnitTest.php
 
