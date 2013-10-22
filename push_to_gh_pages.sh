@@ -12,7 +12,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         # copy data we're interested in to other place
         cp -Rv build/result/coverage $HOME/build/coverage
         cp -Rv build/result/docs $HOME/build/docs
-        cp -Rv build/result/phploc.txt $HOME/build/phploc.txt
+  
         # go to home and setup git
         cd $HOME
         git config --global user.email "travis@travis-ci.org"
@@ -31,7 +31,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         # Remove "old" stuff
         rm -rf coverage/
         rm -rf docs/
-        rm phploc.txt
+        
 
         # copy stuff
         cp -Rv $HOME/build/coverage/ coverage/
