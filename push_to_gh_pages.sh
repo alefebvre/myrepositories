@@ -7,6 +7,8 @@ function error_exit
         exit 1
 }
 
+before_script:
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         echo -e "Starting to update gh-pages"
         # copy data we're interested in to other place
