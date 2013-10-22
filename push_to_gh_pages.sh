@@ -12,7 +12,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         # copy data we're interested in to other place
         cp -Rv build/result/coverage $HOME/build/coverage
         cp -Rv build/result/docs $HOME/build/docs
-      
+        cp -Rv build/result/phploc.txt $HOME/build/phploc.txt
         # go to home and setup git
         cd $HOME
         git config --global user.email "travis@travis-ci.org"
@@ -20,7 +20,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         git config --global push.default matching
         
         # using token clone gh-pages branch
-        git clone --quiet https://github.com/alefebvre/myrepositories.git  repo > /dev/null || error_exit "Error cloning the repository";
+        git clone --quiet https://${GH_TOKEN}@github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
 
         # go into repo anc copy data
         cd repo
@@ -31,10 +31,12 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         # Remove "old" stuff
         rm -rf coverage/
         rm -rf docs/
- 
+        rm phploc.txt
 
-
-
+        # copy stuff
+        cp -Rv $HOME/build/coverage/ coverage/
+        cp -Rv $HOME/build/docs/ docs/
+        cp -Rv $HOME/build/phploc.txt phploc.txt
 
         # add, commit and push files
         git add .
