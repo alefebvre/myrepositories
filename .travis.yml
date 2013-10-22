@@ -9,7 +9,7 @@ php:
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --prefer-source --no-interaction --dev
-  - echo -e "Host github.com\n\tStrictHostKeyChecking yes\y" >> ~/.ssh/config
+
 
 script: phpunit UnitTest.php
 
