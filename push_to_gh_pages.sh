@@ -22,7 +22,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         git config --global push.default matching
        
         # using token clone gh-pages branch
-        git clone --quiet g://${GH_TOKEN}@github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
+        git clone --quiet https://${GH_TOKEN}@github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
 
         # go into repo anc copy data
         cd repo
