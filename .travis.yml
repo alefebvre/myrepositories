@@ -1,7 +1,13 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
+env: 
+  global: 
+  - secure: zb9i6xAYpPeAjK5NiPG6
+   - GH_OWNER: alefebvre
+   - GH_PROJECT_NAME: myrepositories
+
 language: php
 
-php:
+php:     
   - 5.3
   - 5.4
   - 5.5
