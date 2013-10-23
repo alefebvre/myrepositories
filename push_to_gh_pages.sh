@@ -22,7 +22,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         git config --global push.default matching
         curl -X POST -u <alefebvre> -H "Content-Type: application/json" -d "{\"scopes\":[\"public_repo\"],\"note\":\"token for pushing from travis\"}" https://api.github.com/authorizations
         # using token clone gh-pages branch
-        git clone --quiet git://github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
+        git clone --quiet https://github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
 
         # go into repo anc copy data
         cd repo
