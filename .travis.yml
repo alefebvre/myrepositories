@@ -14,6 +14,7 @@ php:
 
 before_script:
   - curl -s http://getcomposer.org/installer | php
+  - gem install travis && travis login && travis token
   - php composer.phar install --prefer-source --no-interaction --dev
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
  
