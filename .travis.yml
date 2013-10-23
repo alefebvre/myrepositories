@@ -1,31 +1,23 @@
-# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
-env: 
-  global: 
-  - secure: 5f4e641bdf0be648f03d04d7373947719b19a786
+env:
+  global:
   - GH_OWNER: alefebvre
   - GH_PROJECT_NAME: myrepositories
-
+  - secure: h0zlphUhRg0BvbYbzy1K4vZV0eeuB94mUu3B1cO9H7NnXOSFfScN7OkfG86Pc9L4IQWaqIN6ZJz1Lq+9nNyq8VTPK4mnLm4xkSY0ykvXdqkt0t+RB3PfaARrZsNGi+F11JEW/XxRFSHRk+YNlISLOlmYPU4BuqjJTPTG1XW7Rks=
 language: php
-
-php:     
-  - 5.3
-  - 5.4
-  - 5.5
-
+php:
+- 5.3
+- 5.4
+- 5.5
 before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --prefer-source --no-interaction --dev
-
- 
-
+- curl -s http://getcomposer.org/installer | php
+- php composer.phar install --prefer-source --no-interaction --dev
 script: phpunit UnitTest.php
-
 after_script:
-  - export POST_BUILD=true
-  - wget http://pear.phpunit.de/get/phploc.phar
-  - php phploc.phar src/ > build/result/phploc.txt
-  - wget https://github.com/downloads/apigen/apigen/ApiGen-2.8.0-standalone.zip --no-check-certificate
-  - unzip ApiGen-2.8.0-standalone.zip
-  - rm ApiGen-2.8.0-standalone.zip
-  - php apigen/apigen.php --source Application --destination build/result/docs/ 
-  - bash push_to_gh_pages.sh
+- export POST_BUILD=true
+- wget http://pear.phpunit.de/get/phploc.phar
+- php phploc.phar src/ > build/result/phploc.txt
+- wget https://github.com/downloads/apigen/apigen/ApiGen-2.8.0-standalone.zip --no-check-certificate
+- unzip ApiGen-2.8.0-standalone.zip
+- rm ApiGen-2.8.0-standalone.zip
+- php apigen/apigen.php --source Application --destination build/result/docs/
+- bash push_to_gh_pages.sh

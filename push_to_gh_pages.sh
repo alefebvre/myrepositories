@@ -7,9 +7,6 @@ function error_exit
         exit 1
 }
 
-curl -X POST -u alefebvre:zan69X62 \
-  -d '{"note":"file upload script","scopes":["repo"]}' \
-  https://api.github.com/authorizations
 
 
 if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -25,7 +22,7 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         git config --global push.default matching
        
         # using token clone gh-pages branch
-        git clone --quiet https://${GH_TOKEN}github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
+        git clone --quiet https://${GH_TOKEN}@github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
 
         # go into repo anc copy data
         cd repo
