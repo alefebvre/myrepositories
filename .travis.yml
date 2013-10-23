@@ -2,8 +2,8 @@
 env: 
   global: 
   - secure: zb9i6xAYpPeAjK5NiPG6
-   - GH_OWNER: alefebvre
-   - GH_PROJECT_NAME: myrepositories
+  - GH_OWNER: alefebvre
+  - GH_PROJECT_NAME: myrepositories
 
 language: php
 
