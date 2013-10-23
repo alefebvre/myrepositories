@@ -1,7 +1,7 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 env: 
   global: 
-  - secure: zb9i6xAYpPeAjK5NiPG6
+  - secure: 5f4e641bdf0be648f03d04d7373947719b19a786
   - GH_OWNER: alefebvre
   - GH_PROJECT_NAME: myrepositories
 
