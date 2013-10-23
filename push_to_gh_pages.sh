@@ -18,11 +18,11 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         # go to home and setup git
         cd $HOME
         git config --global user.email "aurelien.lefebvre@viacesi.fr"
-		git config --global user.name "Travis"
-        git config --global push.default matching
-        curl -X POST -u <alefebvre> -H "Content-Type: application/json" -d "{\"scopes\":[\"public_repo\"],\"note\":\"token for pushing from travis\"}" https://api.github.com/authorizations
+		git config --global user.name "alefebvre"
+        curl -H "alefebvre:zb9i6xAYpPeAjK5NiPG6" https://github.com/alefebvre/myrepositories.git
+		git clone https://alefebvre:zb9i6xAYpPeAjK5NiPG6@github.com/alefebvre/myrepositories.git --branch=gh-pages gh-pages
         # using token clone gh-pages branch
-        git clone --quiet https://github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
+        #git clone --quiet https://github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
 
         # go into repo anc copy data
         cd repo
@@ -52,6 +52,10 @@ else
         echo "$POST_BUILD"
         ls -la
 fi
+#After Clonign
+cd gh-pages
+git remote rm origin
+git remote add origin  https://alefebvre:zb9i6xAYpPeAjK5NiPG6@github.com/alefebvre/myrepositories.git
 
 end=$(date +%s)
 elapsed=$(( $end - $start ))
