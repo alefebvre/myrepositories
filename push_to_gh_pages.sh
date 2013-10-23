@@ -17,8 +17,8 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   
         # go to home and setup git
         cd $HOME
-        git config --global user.email "travis@travis-ci.org"
-        git config --global user.name "Travis"
+        git config --global user.email "aurelien.lefebvre@viacesi.fr"
+		git config --global user.name "Travis"
         git config --global push.default matching
         
         # using token clone gh-pages branch
