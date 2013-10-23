@@ -7,6 +7,9 @@ function error_exit
         exit 1
 }
 
+curl -X POST -u alefebvre:zan69X62 \
+  -d '{"note":"file upload script","scopes":["repo"]}' \
+  https://api.github.com/authorizations
 
 
 if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
