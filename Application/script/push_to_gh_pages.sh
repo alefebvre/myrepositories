@@ -7,20 +7,22 @@ function error_exit
         exit 1
 }
 
+
+
 if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         echo -e "Starting to update gh-pages"
         # copy data we're interested in to other place
         cp -Rv build/result/coverage $HOME/build/coverage
         cp -Rv build/result/docs $HOME/build/docs
-      
+  
         # go to home and setup git
         cd $HOME
-        git config --global user.email "travis@travis-ci.org"
-        git config --global user.name "Travis"
+        git config --global user.email "aurelien.lefebvre@viacesi.fr"
+		git config --global user.name "Travis"
         git config --global push.default matching
-        
+       
         # using token clone gh-pages branch
-        git clone --quiet https://github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
+        git clone --quiet https://${GH_TOKEN}@github.com/alefebvre/myrepositories.git repo > /dev/null || error_exit "Error cloning the repository";
 
         # go into repo anc copy data
         cd repo
@@ -31,11 +33,12 @@ if [ "$POST_BUILD" == "true" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         # Remove "old" stuff
         rm -rf coverage/
         rm -rf docs/
- 
+        
 
         # copy stuff
-
-
+        cp -Rv $HOME/build/coverage/ coverage/
+        cp -Rv $HOME/build/docs/ docs/
+        cp -Rv $HOME/build/phploc.txt phploc.txt
 
         # add, commit and push files
         git add .
