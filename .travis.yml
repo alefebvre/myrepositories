@@ -11,7 +11,7 @@ php:
 before_script:
 - curl -s http://getcomposer.org/installer | php
 - php composer.phar install --prefer-source --no-interaction --dev
-script: phpunit UnitTest.php
+script: phpunit
 after_success:
 - export POST_BUILD=true
 - wget http://pear.phpunit.de/get/phploc.phar

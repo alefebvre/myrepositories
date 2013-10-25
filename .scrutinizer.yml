@@ -14,7 +14,8 @@ tools:
         filter:
             paths:
                 - 'app/src/*'
-            excluded_paths: {  }
+             excluded_paths:
+                - '*/vendor/*'
         config:
             level: all
             fixers:
@@ -40,32 +41,8 @@ tools:
         enabled: true
         only_changesets: false
         filter:
-            paths: {  }
-            excluded_paths: {  }
-    php_cpd:
-        command: phpcpd
-        excluded_dirs:
-            - vendor
-            - files
-        names:
-            - '*.php'
-        min_lines: 5
-        min_tokens: 70
-        enabled: true
-        filter:
-            paths: {  }
-            excluded_paths: {  }
-    php_loc:
-        command: phploc
-        names:
-            - '*.php'
-        excluded_dirs: {  }
-        enabled: true
-    php_pdepend:
-        command: pdepend
-        configuration_file: null
-        suffixes:
-            - php
-        excluded_dirs:
-            - vendor
-        enabled: true
+            excluded_paths:
+                - '*/vendor/*'
+ 
+  
+  
