@@ -1,48 +1,64 @@
 filter:
+    excluded_paths:
+        - 'vendor/*'
+        - 'app/*'
+        - 'web/*'
     paths: {  }
-    excluded_paths: {  }
 before_commands:
     - 'composer install --prefer-source'
 after_commands: {  }
 artifacts: {  }
 tools:
+    php_code_coverage:
+        enabled: true
+        config_path: ~
+        test_command: phpunit
+        filter:
+            excluded_paths:
+                - 'vendor/*'
+    php_mess_detector:
+        enabled: true
+        extensions:
+            - php
+        command: phpmd
+        filter:
+            paths: { }
+            excluded_paths:
+                - 'vendor/*'
+        config:
+            rulesets:
+                - codesize
     php_cs_fixer:
+        enabled: true
         extensions:
             - php
         command: php-cs-fixer
-        enabled: true
-        filter:
-            paths:
-                - 'app/src/*'
-             excluded_paths:
-                - '*/vendor/*'
         config:
-            level: all
-            fixers:
-                indentation: false
-                linefeed: false
-                trailing_spaces: false
-                unused_use: false
-                phpdoc_params: false
-                visibility: false
-                return: false
-                short_tag: false
-                braces: false
-                include: false
-                php_closing_tag: false
-                extra_empty_lines: false
-                controls_spaces: false
-                elseif: false
-                eof_ending: false
-        path_configs: {  }
-    php_code_coverage:
-        test_command: phpunit
-        config_path: null
+            level: psr2
+    php_analyzer:
         enabled: true
-        only_changesets: false
         filter:
             excluded_paths:
-                - '*/vendor/*'
- 
-  
-  
+                - 'vendor/*'
+        extensions:
+            - php
+    php_code_sniffer:
+        enabled: true
+        config:
+            standard: PSR2
+        extensions:
+            - php
+        command: phpcs
+        filter:
+            excluded_paths:
+                - 'vendor/*'
+    sensiolabs_security_checker:
+        enabled: true
+    php_pdepend:
+        command: pdepend
+        configuration_file: ~
+        suffixes:
+            - php
+        excluded_dirs:
+            - vendor
+        enabled: true
