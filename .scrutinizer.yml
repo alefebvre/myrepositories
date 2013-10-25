@@ -1,0 +1,71 @@
+filter:
+    paths: {  }
+    excluded_paths: {  }
+before_commands:
+    - 'composer install --prefer-source'
+after_commands: {  }
+artifacts: {  }
+tools:
+    php_cs_fixer:
+        extensions:
+            - php
+        command: php-cs-fixer
+        enabled: true
+        filter:
+            paths:
+                - 'app/src/*'
+            excluded_paths: {  }
+        config:
+            level: all
+            fixers:
+                indentation: false
+                linefeed: false
+                trailing_spaces: false
+                unused_use: false
+                phpdoc_params: false
+                visibility: false
+                return: false
+                short_tag: false
+                braces: false
+                include: false
+                php_closing_tag: false
+                extra_empty_lines: false
+                controls_spaces: false
+                elseif: false
+                eof_ending: false
+        path_configs: {  }
+    php_code_coverage:
+        test_command: phpunit
+        config_path: null
+        enabled: true
+        only_changesets: false
+        filter:
+            paths: {  }
+            excluded_paths: {  }
+    php_cpd:
+        command: phpcpd
+        excluded_dirs:
+            - vendor
+            - files
+        names:
+            - '*.php'
+        min_lines: 5
+        min_tokens: 70
+        enabled: true
+        filter:
+            paths: {  }
+            excluded_paths: {  }
+    php_loc:
+        command: phploc
+        names:
+            - '*.php'
+        excluded_dirs: {  }
+        enabled: true
+    php_pdepend:
+        command: pdepend
+        configuration_file: null
+        suffixes:
+            - php
+        excluded_dirs:
+            - vendor
+        enabled: true
