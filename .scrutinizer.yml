@@ -1,8 +1,7 @@
 filter:
     excluded_paths:
         - 'vendor/*'
-        - 'app/*'
-        - 'web/*'
+
     paths: {  }
 before_commands:
     - 'composer install --prefer-source'
@@ -16,18 +15,6 @@ tools:
         filter:
             excluded_paths:
                 - 'vendor/*'
-    php_mess_detector:
-        enabled: true
-        extensions:
-            - php
-        command: phpmd
-        filter:
-            paths: { }
-            excluded_paths:
-                - 'vendor/*'
-        config:
-            rulesets:
-                - codesize
     php_cs_fixer:
         enabled: true
         extensions:
